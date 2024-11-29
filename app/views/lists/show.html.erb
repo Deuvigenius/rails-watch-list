@@ -14,6 +14,9 @@
   <!-- Lien pour ajouter un nouveau bookmark -->
   <%= link_to "Add Movie to list", new_list_bookmark_path(@list), class: "btn btn-primary my-3" %>
 
+  <!-- Lien pour ajouter une image -->
+  
+
   <!-- Liste des films associés à la liste -->
   <ul class="list-group">
     <% if @list.movies.present? %>
