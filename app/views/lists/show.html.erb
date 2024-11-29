@@ -6,7 +6,9 @@
 </nav>
 
 <div class="container">
-  <h1><%= @list.name %></h1>
+  <div class="card-category" style="">
+  <%= @list.name %>
+  </div>
 
   <!-- Lien vers toutes les listes -->
   <%= link_to "Back to lists", lists_path, class: "btn btn-secondary my-3" %>
