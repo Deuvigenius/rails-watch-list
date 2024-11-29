@@ -1,5 +1,27 @@
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/lists">Lists</a>
+    <a class="btn btn-primary my-3" href="/lists/new">New List</a>
+  </div>
+</nav>
+
 <div class="container">
   <h1>Add New List</h1>
 
   <%= render "form", list: @list %>
+
+  <%= link_to "Back to lists", lists_path, class: "btn btn-secondary my-3" %>
+</div>
+
+<div class="footer">
+  <div class="footer-links">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+  </div>
+  <div class="footer-copyright">
+    This footer is made with <i class="fas fa-heart"></i> at Le Wagon
+  </div>
 </div>

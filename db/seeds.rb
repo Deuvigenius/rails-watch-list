@@ -1,9 +1,10 @@
 Movie.destroy_all
+List.destroy_all
 
 50.times do
   Movie.create(
     title: Faker::Movie.title,
-    overview: Faker::Movie.quote,
+    overview: Faker::Lorem.paragraph,
     poster_url: Faker::Avatar.image,
     rating: rand(0.0..10.0)
   )

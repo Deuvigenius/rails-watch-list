@@ -1,11 +1,45 @@
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/lists">Lists</a>
+    <a class="btn btn-primary my-3" href="/lists/new">New List</a>
+  </div>
+</nav>
+
 <div class="container">
   <h1><%= @list.name %></h1>
-  <%= link_to "Back to lists", lists_path %>
-  <%= link_to "Add Movie", new_list_bookmark_path(@list) %>
 
-    <ul class="list-group">
+  <!-- Lien vers toutes les listes -->
+  <%= link_to "Back to lists", lists_path, class: "btn btn-secondary my-3" %>
+
+  <!-- Lien pour ajouter un nouveau bookmark -->
+  <%= link_to "Add Movie to list", new_list_bookmark_path(@list), class: "btn btn-primary my-3" %>
+
+  <!-- Liste des films associés à la liste -->
+  <ul class="list-group">
+    <% if @list.movies.present? %>
       <% @list.movies.each do |movie| %>
-        <li class="list-group-item"><%= movie.title %></li>
+      <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <strong><%= movie.title %></strong>
+          <!-- Suppression d'un bookmark -->
+          <%= link_to "delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove #{movie.title} from your #{@list.name} list"}, class: 'text-danger' %>
+        </li>
       <% end %>
-    </ul>
+    <% else %>
+      <li class="list-group-item">No movies in this list yet.</li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="footer">
+  <div class="footer-links">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+  </div>
+  <div class="footer-copyright">
+    This footer is made with <i class="fas fa-heart"></i> at Le Wagon
+  </div>
 </div>
